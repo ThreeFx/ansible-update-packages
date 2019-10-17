@@ -1,0 +1,22 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint:
+  name: yamllint
+platforms:
+  - name: debian10
+    image: geerlingguy/docker-debian10-ansible
+    pre_build_image: true
+  - name: archlinux
+    image: chriswayg/docker-archlinux-ansible
+    pre_build_image: true
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+verifier:
+  name: testinfra
+  lint:
+    name: flake8
